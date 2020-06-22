@@ -79,3 +79,7 @@ class SlidingFigure:
         self.update_lines(idx)
         self.update_hist(idx)
         self._fig.canvas.draw_idle()
+        # plt.savefig('{:05d}.png'.format(idx),
+        #             facecolor='w', edgecolor='w',
+        #             format='png', transparent=False,
+        #             bbox_inches='tight', pad_inches=0.0)
