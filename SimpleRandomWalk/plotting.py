@@ -15,6 +15,7 @@ class SlidingFigure:
 
         self._length = self._X.shape[1]
         self._X_max = np.abs(self._X.reshape(-1)).max()
+        self._X_max = max([self._X_max, np.sqrt(self._T[-1])])
         self._t0 = int(self._length/10)
 
         self._fig = plt.figure(figsize=(16, 8))
@@ -42,13 +43,13 @@ class SlidingFigure:
         ]
         axis.plot(self._T, np.sqrt(self._T), 'k-.', linewidth=0.75, label='$\pm\sqrt{t}$')
         axis.plot(self._T, -np.sqrt(self._T), 'k-.', linewidth=0.75)
-        axis.set_xlim([0, self._length])
-        axis.set_ylim([-self._X_max, self._X_max])
         axis.set_title('a collection of "simple random walks"')
         axis.set_xlabel('t')
         axis.set_ylabel('X')
         axis.legend(loc='upper left', fancybox=True, shadow=False, framealpha=0.6)
-        axis.axis('equal')
+        # axis.axis('equal')
+        axis.set_xlim([0, self._length])
+        axis.set_ylim([-self._X_max, self._X_max])
 
     def plot_hist(self, axis):
         ''''''
