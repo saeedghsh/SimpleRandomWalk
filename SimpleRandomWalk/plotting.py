@@ -33,7 +33,7 @@ class SlidingFigure:
         self.plot_hist(self._axes[1])
         self._fig.tight_layout()
         plt.show()
-        
+
     def plot_lines(self, axis):
         ''''''
         self._lines = [
