@@ -3,14 +3,21 @@ Simple Random Walk - main script
 """
 #!/usr/bin/env python
 from __future__ import print_function
+import argparse
 
 from SimpleRandomWalk.SimpleRandomWalk import SimpleRandomWalk
 from SimpleRandomWalk.plotting import SlidingFigure
 
 if __name__ == "__main__":
+    PARSER = argparse.ArgumentParser(description='number and temopral length of processes')
+    PARSER.add_argument('--count', dest='count', type=int,# nargs=1,
+                        action='store', default=1,
+                        help='Number of stochastic processes')
+    PARSER.add_argument('--length', dest='length', type=int, #nargs=1,
+                        action='store', default=100,
+                        help='length (time) of stochastic processes')
+    ARGS = PARSER.parse_args()
+
     
-    count  = 1
-    length = 100
-    
-    random_walks = [SimpleRandomWalk(length) for _ in range(count)]
-    sf = SlidingFigure(random_walks)
+    RANDOM_WALKS = [SimpleRandomWalk(ARGS.length) for _ in range(ARGS.count)]
+    FIGURE = SlidingFigure(RANDOM_WALKS)
