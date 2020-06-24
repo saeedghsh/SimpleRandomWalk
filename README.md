@@ -1,6 +1,8 @@
-Simple Random Walk
+Stochastic Processes
 ==================
-Python implementation of Simple Random Walk, mainly a sandbox to play with matplotlib slider.
+
+Python implementation of Simple Stochastic Processes (e.g. Simple Random Walk).
+Right now it is mainly a sandbox to play with matplotlib slider.
 
 <p align="center">
 	<img src="https://github.com/saeedghsh/SimpleRandomWalk/blob/master/animation.gif" width="900">
@@ -16,7 +18,7 @@ Python implementation of Simple Random Walk, mainly a sandbox to play with matpl
 
 License
 -------
-Distributed with a GNU GENERAL PUBLIC LICENSE; see [LICENSE](https://github.com/saeedghsh/SimpleRandomWalk/blob/master/LICENSE).
+Distributed with a GNU GENERAL PUBLIC LICENSE; see [LICENSE](https://github.com/saeedghsh/StochasticProcesses/blob/master/LICENSE).
 ```
 Copyright (C) Saeed Gholami Shahbandi
 ```
