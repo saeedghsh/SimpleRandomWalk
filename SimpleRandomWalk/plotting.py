@@ -1,7 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.widgets
-    
+
+
 class SlidingFigure:
     ''''''
     def __init__(self, random_walks: list):
@@ -41,19 +42,23 @@ class SlidingFigure:
             axis.plot(rw.T[:self._t0], rw.X[:self._t0], alpha=0.7)[0]
             for rw in self._random_walks
         ]
-        axis.plot(self._T, np.sqrt(self._T), 'k-.', linewidth=0.75, label='$\pm\sqrt{t}$')
+        axis.plot(
+            self._T, np.sqrt(self._T),
+            'k-.', linewidth=0.75, label='$\pm\sqrt{t}$')
         axis.plot(self._T, -np.sqrt(self._T), 'k-.', linewidth=0.75)
         axis.set_title('a collection of "simple random walks"')
         axis.set_xlabel('t')
         axis.set_ylabel('X')
-        axis.legend(loc='upper left', fancybox=True, shadow=False, framealpha=0.6)
+        axis.legend(
+            loc='upper left',
+            fancybox=True, shadow=False, framealpha=0.6)
         # axis.axis('equal')
         axis.set_xlim([0, self._length])
         axis.set_ylim([-self._X_max, self._X_max])
 
     def plot_hist(self, axis):
         ''''''
-        axis.hist(self._X[:,:self._t0].reshape(-1), bins=self._bins)
+        axis.hist(self._X[:, :self._t0].reshape(-1), bins=self._bins)
         axis.set_title('histogram of all "simple random walks" values')
         axis.set_xlabel('X')
         axis.set_ylabel('distribution')
@@ -61,18 +66,19 @@ class SlidingFigure:
 
     def update_lines(self, idx: int):
         ''''''
-        for l, rw in zip(self._lines, self._random_walks):
-            l.set_data(rw.T[:idx], rw.X[:idx])
+        for line, rw in zip(self._lines, self._random_walks):
+            line.set_data(rw.T[:idx], rw.X[:idx])
 
     def update_hist(self, idx: int):
         ''''''
         self._axes[1].cla()
-        self._axes[1].hist(self._X[:,:idx].reshape(-1), bins=self._bins)
-        self._axes[1].set_title('histogram of all "simple random walks" values')
+        self._axes[1].hist(self._X[:, :idx].reshape(-1), bins=self._bins)
+        self._axes[1].set_title(
+            'histogram of all "simple random walks" values')
         self._axes[1].set_xlabel('X')
         self._axes[1].set_ylabel('distribution')
         self._axes[1].set_xlim([self._bins.min(), self._bins.max()])
-    
+
     def update(self, val):
         ''''''
         idx = int(self._time_slider.val)

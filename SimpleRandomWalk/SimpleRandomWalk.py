@@ -1,15 +1,16 @@
 import numpy as np
 
+
 class SimpleRandomWalk:
     ''''''
     def __init__(self, length: int):
         ''''''
         assert isinstance(length, int) and length > 0
         self._length = length
-        self._T = np.arange( length )
-        self._Y = np.random.randint(0, 2, length) *2 -1
+        self._T = np.arange(length)
+        self._Y = np.random.randint(0, 2, length) * 2 - 1
         self._Y[0] = 0
-        self._X = np.add.accumulate( self._Y )
+        self._X = np.add.accumulate(self._Y)
 
     def __repr__(self):
         ''''''
